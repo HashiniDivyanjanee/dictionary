@@ -9,7 +9,9 @@ class LoadWords extends WordBlocEvent {}
 
 class AddWord extends WordBlocEvent {
   final String word;
-  AddWord(this.word);
+  final String example;
+  final String meaning;
+  AddWord(this.word, this.example, this.meaning);
 
   @override
   List<Object?> get props => [word];
