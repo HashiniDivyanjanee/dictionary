@@ -1,6 +1,6 @@
 import 'package:dictionary/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/repository/dictionary_repository.dart';
-import 'package:dictionary/view/home/screen/disctionary_screen.dart';
+import 'package:dictionary/view/EnterScreen/Screen/disctionary_screen.dart';
 import 'package:dictionary/view/home/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(scaffoldBackgroundColor: const Color.fromARGB(255, 231, 229, 229)),
         debugShowCheckedModeBanner: false,
-        home: const Home(),
+        home:  Home(),
       ),
     );
   }
