@@ -1,6 +1,6 @@
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/repository/dictionary_repository.dart';
-import 'package:dictionary/presentation/page/EnterScreen/Screen/disctionary_screen.dart';
+import 'package:dictionary/presentation/page/addWordScreen/Screen/enter_screen.dart';
 import 'package:dictionary/presentation/page/home/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

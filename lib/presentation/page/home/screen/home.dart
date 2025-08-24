@@ -1,7 +1,7 @@
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/model/wordEntry.dart';
 import 'package:dictionary/presentation/widget/button/bottom_naav_bar.dart';
-import 'package:dictionary/presentation/page/EnterScreen/Screen/disctionary_screen.dart';
+import 'package:dictionary/presentation/page/addWordScreen/Screen/enter_screen.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
 import 'package:dictionary/presentation/page/home/widget/item_card_widget.dart';
 import 'package:dictionary/presentation/page/home/widget/searchBar_widget.dart';
@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
                     child: SizedBox(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.8,
-                      child: DictionaryScreen(),
+                      child: AddWordScreen(),
                     ),
                   );
                 },
