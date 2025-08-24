@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DictionaryScreen extends StatelessWidget {
   const DictionaryScreen({super.key});
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     final TextEditingController wordcontroller = TextEditingController();
     final TextEditingController examplecontroller = TextEditingController();
@@ -52,34 +52,7 @@ class DictionaryScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Expanded(
-            //   child: BlocBuilder<WordBlocBloc, WordBlocState>(
-            //     builder: (context, state) {
-            //       if (state.isLoading) {
-            //         return const Center(child: CircularProgressIndicator());
-            //       }
-            //       if (state.words.isEmpty) {
-            //         return const Center(child: Text("No words added yet."));
-            //       }
-            //       return ListView.builder(
-            //         itemCount: state.words.length,
-            //         itemBuilder: (context, index) {
-            //           return ListTile(
-            //             title: Text(state.words[index]),
-            //             trailing: IconButton(
-            //               icon: const Icon(Icons.delete, color: Colors.red),
-            //               onPressed: () {
-            //                 context
-            //                     .read<WordBlocBloc>()
-            //                     .add(RemoveWord(index));
-            //               },
-            //             ),
-            //           );
-            //         },
-            //       );
-            //     },
-            //   ),
-            // ),
+  
           ],
         ),
       ),

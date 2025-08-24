@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context)=> WordBlocBloc(DictionaryRepository()))],
+      providers: [BlocProvider(create: (context)=> WordBlocBloc(DictionaryRepository())..add(LoadWords()),)],
       child: MaterialApp(
         theme: ThemeData(scaffoldBackgroundColor: const Color.fromARGB(255, 231, 229, 229)),
         debugShowCheckedModeBanner: false,

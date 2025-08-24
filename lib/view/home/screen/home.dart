@@ -1,5 +1,6 @@
 import 'package:dictionary/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/model/wordEntry.dart';
+import 'package:dictionary/view/common/widget/bottom_naav_bar.dart';
 import 'package:dictionary/view/home/screen/disctionary_screen.dart';
 import 'package:dictionary/view/home/widget/appBar_widget.dart';
 import 'package:dictionary/view/home/widget/item_card_widget.dart';
@@ -22,9 +23,17 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           SearchBarWidget(),
-          ElevatedButton(onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const DictionaryScreen()));
-          }, child: Text("Next")),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DictionaryScreen(),
+                ),
+              );
+            },
+            child: Text("Next"),
+          ),
           SizedBox(height: 10),
           Expanded(
             child: BlocBuilder<WordBlocBloc, WordBlocState>(
@@ -38,10 +47,13 @@ class _HomeState extends State<Home> {
                 return ListView.builder(
                   itemCount: state.words.length,
                   itemBuilder: (context, index) {
-                     Wordentry entry = state.words[index];
+                    Wordentry entry = state.words[index];
                     return ItemCardWidget(
                       title: entry.word,
                       subtitle: entry.example,
+                      delete_button: () {
+                        context.read<WordBlocBloc>().add(RemoveWord(index));
+                      },
                     );
                   },
                 );
@@ -50,22 +62,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.cyan[300],
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add',  ),
-          BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code_scanner),
-            label: 'Scanner',
-          ),
-        ],
-        currentIndex: 2,
-        onTap: (value) {},
-      ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
