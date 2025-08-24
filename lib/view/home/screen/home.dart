@@ -17,19 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late final WordBlocBloc wordBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    wordBloc = WordBlocBloc(DictionaryRepository())..add(LoadWords());
-  }
-
-  @override
-  void dispose() {
-    wordBloc.close();
-    super.dispose();
-  }
+  // Remove the local bloc instance - use the one from main.dart instead
   
   @override
   Widget build(BuildContext context) {
@@ -41,20 +29,18 @@ class _HomeState extends State<Home> {
           ElevatedButton(
             onPressed: () {
               showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          insetPadding: EdgeInsets.all(10),
-          child: SizedBox(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.8, // Adjust height
-            child: BlocProvider(
-              create: (_) => WordBlocBloc(DictionaryRepository())..add(LoadWords()),
-              child: DictionaryScreen(), // Extract body of DictionaryScreen
-            ),
-          ),
-        );
-      },);
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    insetPadding: EdgeInsets.all(10),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: DictionaryScreen(), // Use the existing bloc from context
+                    ),
+                  );
+                },
+              );
             },
             child: Text("Next"),
           ),

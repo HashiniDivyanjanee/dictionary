@@ -15,40 +15,38 @@ class DictionaryScreen extends StatelessWidget {
     final TextEditingController examplecontroller = TextEditingController();
     final TextEditingController meaningcontroller = TextEditingController();
 
-    return BlocProvider(
-      create: (_) => WordBlocBloc(DictionaryRepository())..add(LoadWords()),
-      child: Scaffold(
-        appBar: appBar_widget(),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              CustomTextField(hintText: 'Enter Word', controller: wordcontroller,),
-              SizedBox(height: 20),
-              CustomTextField(hintText: 'Enter Meaning', controller: meaningcontroller,),
-              SizedBox(height: 20),
-              CustomTextField(hintText: 'Enter Example', controller: examplecontroller,),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (wordcontroller.text.trim().isNotEmpty) {
-                    context.read<WordBlocBloc>().add(
-                      AddWord(
-                        wordcontroller.text.trim(),
-                        examplecontroller.text.trim(),
-                        meaningcontroller.text.trim(),
-                      ),
-                    );
-                    wordcontroller.clear();
-                    examplecontroller.clear();
-                    meaningcontroller.clear();
-                  }
-                },
-                child: Text("Save"),
-              ),
-
-            ],
-          ),
+    // Remove BlocProvider - use the existing bloc from context
+    return Scaffold(
+      appBar: appBar_widget(),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            CustomTextField(hintText: 'Enter Word', controller: wordcontroller,),
+            SizedBox(height: 20),
+            CustomTextField(hintText: 'Enter Meaning', controller: meaningcontroller,),
+            SizedBox(height: 20),
+            CustomTextField(hintText: 'Enter Example', controller: examplecontroller,),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                if (wordcontroller.text.trim().isNotEmpty) {
+                  context.read<WordBlocBloc>().add(
+                    AddWord(
+                      wordcontroller.text.trim(),
+                      examplecontroller.text.trim(),
+                      meaningcontroller.text.trim(),
+                    ),
+                  );
+                  wordcontroller.clear();
+                  examplecontroller.clear();
+                  meaningcontroller.clear();
+                  Navigator.of(context).pop(); // Close dialog after saving
+                }
+              },
+              child: Text("Save"),
+            ),
+          ],
         ),
       ),
     );

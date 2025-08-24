@@ -6,7 +6,6 @@ class ItemCardWidget extends StatelessWidget {
   final VoidCallback? onTapPage;
   final VoidCallback delete_button;
 
-
   const ItemCardWidget({
     super.key,
     required this.title,
@@ -23,14 +22,23 @@ class ItemCardWidget extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: Icon(Icons.star),  
-          title: Text(title),
-          subtitle: Text(subtitle),
-          trailing: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.bookmark)),
-              IconButton(onPressed: delete_button, icon: Icon(Icons.delete)),
-            ],
+          title: Text(title ?? "No title"), // Add null safety
+          subtitle: Text(subtitle ?? "No subtitle"), // Add null safety
+          trailing: SizedBox(
+            width: 96, // Fixed width to prevent overflow
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  onPressed: () {}, 
+                  icon: Icon(Icons.bookmark)
+                ),
+                IconButton(
+                  onPressed: delete_button, 
+                  icon: Icon(Icons.delete)
+                ),
+              ],
+            ),
           ),
           onTap: onTapPage,
         ),
