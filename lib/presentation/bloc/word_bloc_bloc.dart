@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dictionary/model/wordEntry.dart';
-import 'package:dictionary/repository/dictionary_repository.dart';
+import 'package:dictionary/data/model/wordEntry.dart';
+import 'package:dictionary/data/repository/dictionary_repository.dart';
 import 'package:equatable/equatable.dart';
 part 'word_bloc_event.dart';
 part 'word_bloc_state.dart';

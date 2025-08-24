@@ -1,6 +1,6 @@
 // repository/dictionary_repository.dart
 import 'dart:convert';
-import 'package:dictionary/model/wordEntry.dart';
+import 'package:dictionary/data/model/wordEntry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DictionaryRepository {

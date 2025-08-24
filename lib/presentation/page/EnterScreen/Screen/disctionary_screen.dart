@@ -1,8 +1,8 @@
 // ui/dictionary_screen.dart
-import 'package:dictionary/bloc/word_bloc_bloc.dart';
-import 'package:dictionary/repository/dictionary_repository.dart';
-import 'package:dictionary/view/EnterScreen/widget/text_field.dart';
-import 'package:dictionary/view/home/widget/appBar_widget.dart';
+import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
+import 'package:dictionary/data/repository/dictionary_repository.dart';
+import 'package:dictionary/presentation/widget/common/text_field.dart';
+import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

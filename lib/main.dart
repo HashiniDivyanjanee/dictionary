@@ -1,7 +1,7 @@
-import 'package:dictionary/bloc/word_bloc_bloc.dart';
-import 'package:dictionary/repository/dictionary_repository.dart';
-import 'package:dictionary/view/EnterScreen/Screen/disctionary_screen.dart';
-import 'package:dictionary/view/home/screen/home.dart';
+import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
+import 'package:dictionary/data/repository/dictionary_repository.dart';
+import 'package:dictionary/presentation/page/EnterScreen/Screen/disctionary_screen.dart';
+import 'package:dictionary/presentation/page/home/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
