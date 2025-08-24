@@ -22,10 +22,10 @@ class ItemCardWidget extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: Icon(Icons.star),  
-          title: Text(title ?? "No title"), // Add null safety
-          subtitle: Text(subtitle ?? "No subtitle"), // Add null safety
+          title: Text(title ?? "No title"), 
+          subtitle: Text(subtitle ?? "No subtitle"), 
           trailing: SizedBox(
-            width: 96, // Fixed width to prevent overflow
+            width: 96, 
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

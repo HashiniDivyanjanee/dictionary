@@ -19,7 +19,6 @@ class Wordentry {
     );
   }
 
-  // Add equality operators for better comparison
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

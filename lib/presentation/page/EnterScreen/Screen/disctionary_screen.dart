@@ -1,6 +1,5 @@
 // ui/dictionary_screen.dart
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
-import 'package:dictionary/data/repository/dictionary_repository.dart';
 import 'package:dictionary/presentation/widget/common/text_field.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ class DictionaryScreen extends StatelessWidget {
     final TextEditingController examplecontroller = TextEditingController();
     final TextEditingController meaningcontroller = TextEditingController();
 
-    // Remove BlocProvider - use the existing bloc from context
     return Scaffold(
       appBar: appBar_widget(),
       body: Padding(
@@ -41,7 +39,7 @@ class DictionaryScreen extends StatelessWidget {
                   wordcontroller.clear();
                   examplecontroller.clear();
                   meaningcontroller.clear();
-                  Navigator.of(context).pop(); // Close dialog after saving
+                  Navigator.of(context).pop(); 
                 }
               },
               child: Text("Save"),

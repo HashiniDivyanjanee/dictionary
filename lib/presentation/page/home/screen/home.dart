@@ -1,6 +1,5 @@
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/model/wordEntry.dart';
-import 'package:dictionary/data/repository/dictionary_repository.dart';
 import 'package:dictionary/presentation/widget/button/bottom_naav_bar.dart';
 import 'package:dictionary/presentation/page/EnterScreen/Screen/disctionary_screen.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
@@ -17,7 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // Remove the local bloc instance - use the one from main.dart instead
   
   @override
   Widget build(BuildContext context) {
@@ -36,7 +34,7 @@ class _HomeState extends State<Home> {
                     child: SizedBox(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.8,
-                      child: DictionaryScreen(), // Use the existing bloc from context
+                      child: DictionaryScreen(),
                     ),
                   );
                 },
