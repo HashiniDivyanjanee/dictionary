@@ -10,7 +10,7 @@ class SearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 90,
-      decoration: BoxDecoration(color: Colors.cyan[300]),
+      decoration: BoxDecoration(color: Color.fromARGB(255, 94, 185, 97),),
       child: Padding(
         padding: const EdgeInsets.only(right: 20, left: 20, top: 10),
         child: TextField(

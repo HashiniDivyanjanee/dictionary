@@ -1,5 +1,6 @@
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/model/wordEntry.dart';
+import 'package:dictionary/presentation/page/wordView/screen/word_view.dart';
 import 'package:dictionary/presentation/widget/button/bottom_naav_bar.dart';
 import 'package:dictionary/presentation/page/addWordScreen/Screen/enter_screen.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
@@ -16,7 +17,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,19 @@ class _HomeState extends State<Home> {
             },
             child: Text("Next"),
           ),
+
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WordView()),
+              );
+            },
+            child: Text("View"),
+          ),
+
           SizedBox(height: 10),
+
           Expanded(
             child: BlocBuilder<WordBlocBloc, WordBlocState>(
               builder: (context, state) {
