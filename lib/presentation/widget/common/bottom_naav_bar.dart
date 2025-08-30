@@ -1,16 +1,31 @@
 
+import 'package:dictionary/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomNavBar extends StatelessWidget {
+  final int currentIndex;
+
   const BottomNavBar({
-    super.key,
+    super.key, required this.currentIndex,
   });
 
   @override
   Widget build(BuildContext context) {
+     final List<String> bottomNavRoutes = [
+      AppRoutes.addWord,
+      AppRoutes.saved,
+      AppRoutes.home,
+      AppRoutes.history,
+      AppRoutes.scanner,
+    ];
+    
     return BottomNavigationBar(
       selectedItemColor: Colors.cyan[300],
       unselectedItemColor: Colors.grey,
+       onTap: (index) {
+        context.go(bottomNavRoutes[index]); 
+      },
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
         BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
@@ -22,7 +37,7 @@ class BottomNavBar extends StatelessWidget {
         ),
       ],
       currentIndex: 2,
-      onTap: (value) {},
+      
     );
   }
 }

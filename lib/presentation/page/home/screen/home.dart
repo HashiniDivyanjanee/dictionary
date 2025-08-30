@@ -1,7 +1,7 @@
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/model/wordEntry.dart';
 import 'package:dictionary/presentation/page/wordView/screen/word_view.dart';
-import 'package:dictionary/presentation/widget/button/bottom_naav_bar.dart';
+import 'package:dictionary/presentation/widget/common/bottom_naav_bar.dart';
 import 'package:dictionary/presentation/page/addWordScreen/Screen/enter_screen.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
 import 'package:dictionary/presentation/page/home/widget/item_card_widget.dart';
@@ -24,25 +24,25 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           SearchBarWidget(),
-          ElevatedButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return Dialog(
-                    insetPadding: EdgeInsets.all(10),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.8,
-                      child: AddWordScreen(),
-                    ),
-                  );
-                },
-              );
-            },
-            child: Text("Next"),
-          ),
 
+          // ElevatedButton(
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       builder: (context) {
+          //         return Dialog(
+          //           insetPadding: EdgeInsets.all(10),
+          //           child: SizedBox(
+          //             width: double.infinity,
+          //             height: MediaQuery.of(context).size.height * 0.8,
+          //             child: AddWordScreen(),
+          //           ),
+          //         );
+          //       },
+          //     );
+          //   },
+          //   child: Text("Next"),
+          // ),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -58,6 +58,10 @@ class _HomeState extends State<Home> {
           Expanded(
             child: BlocBuilder<WordBlocBloc, WordBlocState>(
               builder: (context, state) {
+                final listToShow =
+                    state.filteredWords.isNotEmpty || state.isLoading
+                    ? state.filteredWords
+                    : state.words;
                 if (state.isLoading) {
                   return const Center(child: CircularProgressIndicator());
                 }
@@ -67,6 +71,7 @@ class _HomeState extends State<Home> {
                 return ListView.builder(
                   itemCount: state.words.length,
                   itemBuilder: (context, index) {
+                    
                     Wordentry entry = state.words[index];
                     return ItemCardWidget(
                       title: entry.word,
@@ -82,7 +87,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(currentIndex: 2),
     );
   }
 }

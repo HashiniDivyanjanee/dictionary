@@ -1,8 +1,11 @@
 
+import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchBarWidget extends StatelessWidget {
-  const SearchBarWidget({
+  final TextEditingController searchController = TextEditingController();
+ SearchBarWidget({
     super.key,
   });
 
@@ -14,6 +17,11 @@ class SearchBarWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 20, left: 20, top: 10),
         child: TextField(
+          controller: searchController,
+          onChanged: (value) {
+            // 🔥 dispatch search event to bloc
+            context.read<WordBlocBloc>().add(SearchWord(value.trim()));
+          },
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

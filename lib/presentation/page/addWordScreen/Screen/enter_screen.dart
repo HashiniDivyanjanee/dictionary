@@ -1,5 +1,6 @@
 // ui/dictionary_screen.dart
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
+import 'package:dictionary/presentation/widget/common/bottom_naav_bar.dart';
 import 'package:dictionary/presentation/widget/common/text_field.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class AddWordScreen extends StatelessWidget {
               onPressed: () {
                 if (wordcontroller.text.trim().isNotEmpty) {
                   context.read<WordBlocBloc>().add(
-                    AddWord(
+                    AddWord(  
                       wordcontroller.text.trim(),
                       examplecontroller.text.trim(),
                       meaningcontroller.text.trim(),
@@ -47,6 +48,7 @@ class AddWordScreen extends StatelessWidget {
           ],
         ),
       ),
+         bottomNavigationBar: BottomNavBar(currentIndex: 0,),
     );
   }
 }

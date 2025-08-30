@@ -1,3 +1,4 @@
+import 'package:dictionary/app/routes/routes_generator.dart';
 import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/repository/dictionary_repository.dart';
 import 'package:dictionary/presentation/page/addWordScreen/Screen/enter_screen.dart';
@@ -14,11 +15,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context)=> WordBlocBloc(DictionaryRepository())..add(LoadWords()),)],
-      child: MaterialApp(
-        theme: ThemeData(scaffoldBackgroundColor: const Color.fromARGB(255, 231, 229, 229)),
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              WordBlocBloc(DictionaryRepository())..add(LoadWords()),
+        ),
+      ],
+      child: MaterialApp.router(
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromARGB(255, 231, 229, 229),
+        ),
         debugShowCheckedModeBanner: false,
-        home:  Home(),
+        routerConfig: router,
       ),
     );
   }

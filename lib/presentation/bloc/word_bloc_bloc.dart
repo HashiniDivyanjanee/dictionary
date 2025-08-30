@@ -12,6 +12,7 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
     on<LoadWords>(_onLoadWords);
     on<AddWord>(_onAddWords);
     on<RemoveWord>(_onRemoveWords);
+    on<SearchWord>(_onSearchWord);
   }
 
   Future<void> _onLoadWords(
@@ -39,4 +40,17 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
     await repository.saveWords(updatedWords);
     emit(state.copyWith(words: updatedWords));
   }
+
+ void _onSearchWord(
+    SearchWord event,
+    Emitter<WordBlocState> emit,
+  ) {
+    final filtered = state.words
+        .where((wordEntry) =>
+            wordEntry.word.toLowerCase().contains(event.query.toLowerCase()))
+        .toList();
+
+    emit(state.copyWith(filteredWords: filtered));
+  }
+  
 }

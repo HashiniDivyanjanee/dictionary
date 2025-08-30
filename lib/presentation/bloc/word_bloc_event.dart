@@ -24,3 +24,11 @@ class RemoveWord extends WordBlocEvent {
   @override
   List<Object?> get props => [index];
 }
+
+class SearchWord extends WordBlocEvent {
+  final String query;
+ SearchWord(this.query);
+
+  @override
+  List<Object?> get props => [query];
+}
