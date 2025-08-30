@@ -49,6 +49,7 @@ class display_card extends StatelessWidget {
                   style: TextStyle(fontSize: fontSize ?? 27),
                 ),
               ),
+              
             ],
           ),
         ),

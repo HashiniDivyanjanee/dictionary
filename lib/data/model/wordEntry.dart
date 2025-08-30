@@ -1,20 +1,20 @@
 class Wordentry {
   final String word;
-  final String example;
+  final String description;
   final String meaning;
 
-  Wordentry({required this.word, required this.example, required this.meaning});
+  Wordentry({required this.word, required this.description, required this.meaning});
 
   Map<String, dynamic> toJson() => {
     'word': word,
-    'example': example,
+    'description': description,
     'meaning': meaning,
   };
 
   factory Wordentry.fromJson(Map<String, dynamic> json) {
     return Wordentry(
       word: json['word']?.toString() ?? '',
-      example: json['example']?.toString() ?? '',
+      description: json['description']?.toString() ?? '',
       meaning: json['meaning']?.toString() ?? '',
     );
   }
@@ -25,14 +25,14 @@ class Wordentry {
       other is Wordentry &&
           runtimeType == other.runtimeType &&
           word == other.word &&
-          example == other.example &&
+          description == other.description &&
           meaning == other.meaning;
 
   @override
-  int get hashCode => word.hashCode ^ example.hashCode ^ meaning.hashCode;
+  int get hashCode => word.hashCode ^ description.hashCode ^ meaning.hashCode;
 
   @override
   String toString() {
-    return 'Wordentry{word: $word, example: $example, meaning: $meaning}';
+    return 'Wordentry{word: $word, description: $description, meaning: $meaning}';
   }
 }

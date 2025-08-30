@@ -1,3 +1,4 @@
+import 'package:dictionary/data/model/wordEntry.dart';
 import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
 import 'package:dictionary/presentation/page/wordView/widget/actionButton.dart';
 import 'package:dictionary/presentation/page/wordView/widget/display_card.dart';
@@ -5,14 +6,11 @@ import 'package:dictionary/presentation/page/wordView/widget/mainWord.dart';
 import 'package:dictionary/presentation/page/wordView/widget/secondTitle.dart';
 import 'package:flutter/material.dart';
 
-class WordView extends StatefulWidget {
-  const WordView({super.key});
+class WordView extends StatelessWidget {
+  final Wordentry entry;
 
-  @override
-  State<WordView> createState() => _WordViewState();
-}
+  const WordView({super.key, required this.entry});
 
-class _WordViewState extends State<WordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +25,7 @@ class _WordViewState extends State<WordView> {
               padding: const EdgeInsets.only(top: 25),
               child: Column(
                 children: [
-                  mainWord(),
+                  mainWord(word: entry.word),
                   secondTitle(),
                   SizedBox(height: 20),
                   Padding(
@@ -39,9 +37,17 @@ class _WordViewState extends State<WordView> {
             ),
           ),
           SizedBox(height: 10),
-          display_card(header: 'Meaning', meaning: 'Cat'),
-          SizedBox(height: 15,),
-          display_card(header: 'Description', meaning: '고양이 귀여워요.', fontSize: 16,),
+          display_card(
+            header: 'Meaning',
+            meaning: entry.meaning ?? "No meaning",
+          ),
+          SizedBox(height: 15),
+          display_card(
+            header: 'Description',
+            meaning: entry.description ?? "No description",
+            fontSize: 16,
+          ),
+         
         ],
       ),
     );
