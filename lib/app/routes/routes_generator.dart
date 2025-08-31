@@ -10,7 +10,7 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: AppRoutes.home,
-      name: 'Home',
+      name: 'home',
       builder: (context, state) => Home(),
     ),
     GoRoute(

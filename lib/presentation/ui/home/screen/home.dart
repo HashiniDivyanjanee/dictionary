@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
                       delete_button: () {
                         context.read<WordBlocBloc>().add(RemoveWord(index));
                       },
-                      edit_button: () {},
+                      // edit_button: () {},
                       onTapPage: () {
                         Navigator.push(
                           context,
