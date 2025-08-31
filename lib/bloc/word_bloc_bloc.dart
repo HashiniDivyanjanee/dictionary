@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:dictionary/data/model/wordEntry.dart';
 import 'package:dictionary/data/repository/dictionary_repository.dart';
@@ -24,10 +26,15 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
     emit(state.copyWith(words: words, isLoading: false));
   }
 
-    Future<void> _onAddWords(
-      AddWord event, Emitter<WordBlocState> emit) async {
+  Future<void> _onAddWords(AddWord event, Emitter<WordBlocState> emit) async {
     final updatedWords = List<Wordentry>.from(state.words)
-      ..add(Wordentry(word: event.word, example: event.example, meaning: event.meaning));
+      ..add(
+        Wordentry(
+          word: event.word,
+          example: event.example,
+          meaning: event.meaning,
+        ),
+      );
     await repository.saveWords(updatedWords);
     emit(state.copyWith(words: updatedWords));
   }
@@ -36,21 +43,19 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
     RemoveWord event,
     Emitter<WordBlocState> emit,
   ) async {
-    final updatedWords = List<Wordentry>.from(state.words)..removeAt(event.index);
+    final updatedWords = List<Wordentry>.from(state.words)
+      ..removeAt(event.index);
     await repository.saveWords(updatedWords);
     emit(state.copyWith(words: updatedWords));
   }
 
- void _onSearchWord(
-    SearchWord event,
-    Emitter<WordBlocState> emit,
-  ) {
-    final filtered = state.words
-        .where((wordEntry) =>
-            wordEntry.word.toLowerCase().contains(event.query.toLowerCase()))
-        .toList();
+  void _onSearchWord(SearchWord event, Emitter<WordBlocState> emit) {
+    final query = event.query.toLowerCase();
+    final filtered = state.words.where((wordEntry) {
+      return wordEntry.word.toLowerCase().contains(query) ||
+          wordEntry.meaning.toLowerCase().contains(query);
+    }).toList();
 
     emit(state.copyWith(filteredWords: filtered));
   }
-  
 }

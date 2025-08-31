@@ -1,7 +1,7 @@
+import 'package:dictionary/core/constant/appColor.dart';
 import 'package:dictionary/presentation/ui/home/widget/appBar_widget.dart';
 import 'package:dictionary/presentation/ui/wordView/widget/actionButton.dart';
 import 'package:dictionary/presentation/ui/wordView/widget/display_card.dart';
-import 'package:dictionary/presentation/ui/wordView/widget/mainWord.dart';
 import 'package:dictionary/presentation/ui/wordView/widget/secondTitle.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class WordView extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 200,
-            decoration: BoxDecoration(color: Color.fromARGB(255, 94, 185, 97)),
+            decoration: BoxDecoration(color:AppColor.PrimaryColor,),
             child: Padding(
               padding: const EdgeInsets.only(top: 25),
               child: Column(
@@ -33,7 +33,6 @@ class WordView extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  // mainWord(title),
                   secondTitle(),
                   SizedBox(height: 20),
                   Padding(

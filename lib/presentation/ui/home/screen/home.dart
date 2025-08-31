@@ -42,15 +42,16 @@ class _HomeState extends State<Home> {
                   return const Center(child: Text("No words added yet."));
                 }
                 return ListView.builder(
-                  itemCount: state.words.length,
+                    itemCount: listToShow.length, 
                   itemBuilder: (context, index) {
-                    Wordentry entry = state.words[index];
+                     Wordentry entry = listToShow[index];
                     return ItemCardWidget(
                       title: entry.word,
                       subtitle: entry.meaning,
                       delete_button: () {
                         context.read<WordBlocBloc>().add(RemoveWord(index));
                       },
+                      edit_button: () {},
                       onTapPage: () {
                         Navigator.push(
                           context,

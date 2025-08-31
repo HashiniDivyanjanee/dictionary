@@ -1,3 +1,4 @@
+import 'package:dictionary/core/constant/appColor.dart';
 import 'package:flutter/material.dart';
 
 class display_card extends StatelessWidget {
@@ -33,7 +34,7 @@ class display_card extends StatelessWidget {
                   Text(
                     header,
                     style: TextStyle(
-                      color: Color.fromARGB(255, 94, 185, 97),
+                      color: AppColor.PrimaryColor,
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                     ),
