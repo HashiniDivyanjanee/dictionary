@@ -1,5 +1,5 @@
 
-import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
+import 'package:dictionary/bloc/word_bloc_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,10 +1,12 @@
 // ui/dictionary_screen.dart
-import 'package:dictionary/presentation/bloc/word_bloc_bloc.dart';
+import 'package:dictionary/app/routes/app_routes.dart';
+import 'package:dictionary/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/presentation/widget/common/bottom_naav_bar.dart';
 import 'package:dictionary/presentation/widget/common/text_field.dart';
-import 'package:dictionary/presentation/page/home/widget/appBar_widget.dart';
+import 'package:dictionary/presentation/ui/home/widget/appBar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AddWordScreen extends StatelessWidget {
   const AddWordScreen({super.key});
@@ -21,17 +23,23 @@ class AddWordScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            CustomTextField(hintText: 'Enter Word', controller: wordcontroller,),
+            CustomTextField(hintText: 'Enter Word', controller: wordcontroller),
             SizedBox(height: 20),
-            CustomTextField(hintText: 'Enter Meaning', controller: meaningcontroller,),
+            CustomTextField(
+              hintText: 'Enter Meaning',
+              controller: meaningcontroller,
+            ),
             SizedBox(height: 20),
-            CustomTextField(hintText: 'Enter Example', controller: examplecontroller,),
+            CustomTextField(
+              hintText: 'Enter Example',
+              controller: examplecontroller,
+            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 if (wordcontroller.text.trim().isNotEmpty) {
                   context.read<WordBlocBloc>().add(
-                    AddWord(  
+                    AddWord(
                       wordcontroller.text.trim(),
                       examplecontroller.text.trim(),
                       meaningcontroller.text.trim(),
@@ -40,7 +48,8 @@ class AddWordScreen extends StatelessWidget {
                   wordcontroller.clear();
                   examplecontroller.clear();
                   meaningcontroller.clear();
-                  Navigator.of(context).pop(); 
+
+                  GoRouter.of(context).pushNamed(AppRoutes.home);
                 }
               },
               child: Text("Save"),
@@ -48,7 +57,7 @@ class AddWordScreen extends StatelessWidget {
           ],
         ),
       ),
-         bottomNavigationBar: BottomNavBar(currentIndex: 0,),
+      bottomNavigationBar: BottomNavBar(currentIndex: 0),
     );
   }
 }
