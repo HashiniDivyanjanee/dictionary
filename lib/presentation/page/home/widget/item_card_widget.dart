@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class ItemCardWidget extends StatelessWidget {
   final String title;
   final String subtitle;
-    final String desc;
   final VoidCallback? onTapPage;
   final VoidCallback delete_button;
 
@@ -11,8 +10,8 @@ class ItemCardWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.subtitle,
-    this.onTapPage,
-    required this.delete_button, required this.desc,
+    this.onTapPage, 
+    required this.delete_button,
   });
 
   @override
@@ -22,23 +21,22 @@ class ItemCardWidget extends StatelessWidget {
       child: Card(
         color: Colors.white,
         child: ListTile(
-          leading: Icon(Icons.star),
-          title: Column(
-            children: [
-              Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(subtitle),
-            Text(desc)
-            ],
-          ),
-
-          // subtitle: Text(subtitle ?? "No subtitle"),
+          leading: Icon(Icons.star),  
+          title: Text(title ?? "No title"), 
+          subtitle: Text(subtitle ?? "No subtitle"), 
           trailing: SizedBox(
-            width: 96,
+            width: 96, 
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.bookmark)),
-                IconButton(onPressed: delete_button, icon: Icon(Icons.delete)),
+                IconButton(
+                  onPressed: () {}, 
+                  icon: Icon(Icons.bookmark)
+                ),
+                IconButton(
+                  onPressed: delete_button, 
+                  icon: Icon(Icons.delete)
+                ),
               ],
             ),
           ),

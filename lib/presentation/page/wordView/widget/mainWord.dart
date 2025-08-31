@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 class mainWord extends StatelessWidget {
-  final String word;
   const mainWord({
-    super.key, required this.word,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      word,
+      "고양이",
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 38,

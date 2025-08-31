@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => WordView(entry: entry,)),
+                MaterialPageRoute(builder: (context) => WordView()),
               );
             },
             child: Text("View"),
@@ -75,11 +75,10 @@ class _HomeState extends State<Home> {
                     Wordentry entry = state.words[index];
                     return ItemCardWidget(
                       title: entry.word,
-                      subtitle: entry.description,
-                      desc: entry.description ?? "No description",
+                      subtitle: entry.example,
                       delete_button: () {
                         context.read<WordBlocBloc>().add(RemoveWord(index));
-                      }, 
+                      },
                     );
                   },
                 );
