@@ -1,8 +1,6 @@
 import 'package:dictionary/app/routes/routes_generator.dart';
 import 'package:dictionary/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/repository/dictionary_repository.dart';
-import 'package:dictionary/presentation/ui/addWordScreen/Screen/enter_screen.dart';
-import 'package:dictionary/presentation/ui/home/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

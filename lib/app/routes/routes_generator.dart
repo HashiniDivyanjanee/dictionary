@@ -1,7 +1,6 @@
 import 'package:dictionary/app/routes/app_routes.dart';
 import 'package:dictionary/presentation/ui/addWordScreen/Screen/enter_screen.dart';
 import 'package:dictionary/presentation/ui/home/screen/home.dart';
-import 'package:dictionary/presentation/ui/wordView/screen/word_view.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
