@@ -1,5 +1,6 @@
 import 'package:dictionary/bloc/word_bloc_bloc.dart';
 import 'package:dictionary/data/model/wordEntry.dart';
+import 'package:dictionary/presentation/ui/home/widget/update_popup_window.dart';
 import 'package:dictionary/presentation/ui/wordView/screen/word_view.dart';
 import 'package:dictionary/presentation/widget/common/bottom_naav_bar.dart';
 import 'package:dictionary/presentation/ui/home/widget/appBar_widget.dart';
@@ -42,16 +43,26 @@ class _HomeState extends State<Home> {
                   return const Center(child: Text("No words added yet."));
                 }
                 return ListView.builder(
-                    itemCount: listToShow.length, 
+                  itemCount: listToShow.length,
                   itemBuilder: (context, index) {
-                     Wordentry entry = listToShow[index];
+                    Wordentry entry = listToShow[index];
                     return ItemCardWidget(
                       title: entry.word,
                       subtitle: entry.meaning,
+
+                      // Delete Icon Button
                       delete_button: () {
                         context.read<WordBlocBloc>().add(RemoveWord(index));
                       },
-                      // edit_button: () {},
+
+                      // Edit Icon Button
+                      edit_button: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) =>
+                              UpdatePopUpWindow(index: index, entry: entry),
+                        );
+                      },
                       onTapPage: () {
                         Navigator.push(
                           context,

@@ -5,7 +5,7 @@ class ItemCardWidget extends StatelessWidget {
   final String subtitle;
   final VoidCallback onTapPage;
   final VoidCallback delete_button;
-  // final VoidCallback edit_button;
+  final VoidCallback edit_button;
 
   const ItemCardWidget({
     super.key,
@@ -13,7 +13,7 @@ class ItemCardWidget extends StatelessWidget {
     required this.subtitle,
     required this.onTapPage,
     required this.delete_button,
-    // required this.edit_button,
+    required this.edit_button,
   });
 
   @override
@@ -31,7 +31,7 @@ class ItemCardWidget extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.bookmark)),
+                IconButton(onPressed: edit_button, icon: Icon(Icons.edit)),
                
                 IconButton(onPressed: delete_button, icon: Icon(Icons.delete)),
               ],

@@ -15,6 +15,7 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
     on<AddWord>(_onAddWords);
     on<RemoveWord>(_onRemoveWords);
     on<SearchWord>(_onSearchWord);
+    on<EditWord>(_onEditWord);
   }
 
   Future<void> _onLoadWords(
@@ -47,6 +48,20 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
       ..removeAt(event.index);
     await repository.saveWords(updatedWords);
     emit(state.copyWith(words: updatedWords));
+  }
+
+  Future<void> _onEditWord(EditWord event, Emitter<WordBlocState> emit) async {
+    final updateWords = List<Wordentry>.from(state.words);
+
+    if (event.index >= 0 && event.index < updateWords.length) {
+      updateWords[event.index] = Wordentry(
+        word: event.updatedWord,
+        example: event.updatedExample,
+        meaning: event.updatedMeaning,
+      );
+      await repository.saveWords(updateWords);
+      emit(state.copyWith(words: updateWords));
+    }
   }
 
   void _onSearchWord(SearchWord event, Emitter<WordBlocState> emit) {

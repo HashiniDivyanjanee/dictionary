@@ -3,8 +3,12 @@ part of 'word_bloc_bloc.dart';
 class WordBlocState extends Equatable {
   final List<Wordentry> words;
   final bool isLoading;
-final List<Wordentry> filteredWords;
-  const WordBlocState({this.words = const [],this.filteredWords = const [], this.isLoading = false});
+  final List<Wordentry> filteredWords;
+  const WordBlocState({
+    this.words = const [],
+    this.filteredWords = const [],
+    this.isLoading = false,
+  });
 
   WordBlocState copyWith({
     List<Wordentry>? words,

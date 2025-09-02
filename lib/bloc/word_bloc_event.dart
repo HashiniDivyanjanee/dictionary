@@ -25,6 +25,14 @@ class RemoveWord extends WordBlocEvent {
   List<Object?> get props => [index];
 }
 
+class EditWord extends WordBlocEvent{
+  final int index;
+  final String updatedWord;
+  final String updatedExample;
+  final String updatedMeaning;
+  EditWord(this.index, this.updatedWord, this.updatedExample, this.updatedMeaning);
+}
+
 class SearchWord extends WordBlocEvent {
   final String query;
  SearchWord(this.query);
