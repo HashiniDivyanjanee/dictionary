@@ -12,7 +12,6 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<String> bottomNavRoutes = [
       AppRoutes.addWord,
-      AppRoutes.saved,
       AppRoutes.home,
       AppRoutes.history,
       AppRoutes.scanner,
@@ -26,7 +25,6 @@ class BottomNavBar extends StatelessWidget {
       },
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
         BottomNavigationBarItem(

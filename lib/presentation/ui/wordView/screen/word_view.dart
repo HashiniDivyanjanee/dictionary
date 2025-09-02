@@ -4,12 +4,20 @@ import 'package:dictionary/presentation/ui/wordView/widget/actionButton.dart';
 import 'package:dictionary/presentation/ui/wordView/widget/display_card.dart';
 import 'package:dictionary/presentation/ui/wordView/widget/secondTitle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:share_plus/share_plus.dart';
 
 class WordView extends StatelessWidget {
   final String title;
   final String subtitle;
   final String example;
-  const WordView({super.key, required this.title, required this.subtitle, required this.example});
+  const WordView({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.example,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +28,7 @@ class WordView extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 200,
-            decoration: BoxDecoration(color:AppColor.PrimaryColor,),
+            decoration: BoxDecoration(color: AppColor.PrimaryColor),
             child: Padding(
               padding: const EdgeInsets.only(top: 25),
               child: Column(
@@ -37,7 +45,11 @@ class WordView extends StatelessWidget {
                   SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.only(left: 40, right: 40),
-                    child: _build_action_button_row(),
+                    child: _build_action_button_row(
+                      title: title,
+                      subtitle: subtitle,
+                      example: example,
+                    ),
                   ),
                 ],
               ),
@@ -46,11 +58,7 @@ class WordView extends StatelessWidget {
           SizedBox(height: 10),
           display_card(header: 'Meaning', meaning: subtitle),
           SizedBox(height: 15),
-          display_card(
-            header: 'Description',
-            meaning: example,
-            fontSize: 16,
-          ),
+          display_card(header: 'Description', meaning: example, fontSize: 16),
         ],
       ),
     );
@@ -58,17 +66,45 @@ class WordView extends StatelessWidget {
 }
 
 class _build_action_button_row extends StatelessWidget {
-  const _build_action_button_row({super.key});
+  final String title;
+  final String subtitle;
+  final String example;
+  const _build_action_button_row({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.example,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final FlutterTts flutterTts = FlutterTts();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        buildActionButton(onPressed: () {}, icon: Icons.copy),
-        buildActionButton(onPressed: () {}, icon: Icons.bookmark),
-        buildActionButton(onPressed: () {}, icon: Icons.share),
-        buildActionButton(onPressed: () {}, icon: Icons.volume_down_sharp),
+        buildActionButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: title));
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text("Coppied")));
+          },
+          icon: Icons.copy,
+        ),
+       
+        buildActionButton(
+          onPressed: () {
+            Share.share("Word: $title\nMeaning: $subtitle\nExample: $example");
+          },
+          icon: Icons.share,
+        ),
+        buildActionButton(
+          onPressed: () async {
+            await flutterTts.speak(title);
+          },
+          icon: Icons.volume_down_sharp,
+        ),
       ],
     );
   }

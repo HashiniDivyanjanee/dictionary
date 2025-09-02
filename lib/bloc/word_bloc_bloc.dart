@@ -62,6 +62,7 @@ class WordBlocBloc extends Bloc<WordBlocEvent, WordBlocState> {
     }
   }
 
+
   void _onSearchWord(SearchWord event, Emitter<WordBlocState> emit) {
     final query = event.query.toLowerCase();
     final filtered = state.words.where((wordEntry) {

@@ -17,6 +17,5 @@ final GoRouter router = GoRouter(
       name: 'AddWord',
       builder: (context, state) => AddWordScreen(),
     ),
-     
   ],
 );
