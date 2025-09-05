@@ -5,11 +5,13 @@ class display_card extends StatelessWidget {
   final String header;
   final String meaning;
   final double? fontSize;
+  final VoidCallback copy_button;
   const display_card({
     super.key,
     required this.header,
     required this.meaning,
     this.fontSize,
+    required this.copy_button,
   });
 
   @override
@@ -39,7 +41,7 @@ class display_card extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.copy)),
+                  IconButton(onPressed: copy_button, icon: Icon(Icons.copy)),
                 ],
               ),
               Divider(),
@@ -50,7 +52,6 @@ class display_card extends StatelessWidget {
                   style: TextStyle(fontSize: fontSize ?? 27),
                 ),
               ),
-              
             ],
           ),
         ),

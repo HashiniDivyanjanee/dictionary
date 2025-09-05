@@ -48,23 +48,16 @@ class AddWordScreen extends StatelessWidget {
                   wordcontroller.clear();
                   examplecontroller.clear();
                   meaningcontroller.clear();
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text("Success"),
-                        content: Text("Word Added Successfully"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              GoRouter.of(context).pushNamed(AppRoutes.home);
-                            },
-                            child: Text("Ok"),
-                          ),
-                        ],
-                      );
-                    },
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'Word added successfully!',
+                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                      ),
+                      backgroundColor: Colors.green,
+                    ),
                   );
+                  context.go(AppRoutes.home);
                 }
               },
               child: Text("Save"),

@@ -56,9 +56,28 @@ class WordView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          display_card(header: 'Meaning', meaning: subtitle),
+          display_card(
+            header: 'Meaning',
+            meaning: subtitle,
+            copy_button: () {
+              Clipboard.setData(ClipboardData(text: subtitle));
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text("Coppied")));
+            },
+          ),
           SizedBox(height: 15),
-          display_card(header: 'Description', meaning: example, fontSize: 16),
+          display_card(
+            header: 'Description',
+            meaning: example,
+            fontSize: 16,
+            copy_button: () {
+              Clipboard.setData(ClipboardData(text: example));
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text("Coppied")));
+            },
+          ),
         ],
       ),
     );
@@ -92,7 +111,7 @@ class _build_action_button_row extends StatelessWidget {
           },
           icon: Icons.copy,
         ),
-       
+
         buildActionButton(
           onPressed: () {
             Share.share("Word: $title\nMeaning: $subtitle\nExample: $example");

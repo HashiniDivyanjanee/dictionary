@@ -24,13 +24,13 @@ class SearchBarWidget extends StatelessWidget {
           },
           decoration: InputDecoration(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(25),
             ),
             fillColor: Colors.white,
             filled: true,
             hintText: "Search",
             prefixIcon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.mic),
+           
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey[200]!),
             ),

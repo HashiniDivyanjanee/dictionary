@@ -52,7 +52,35 @@ class _HomeState extends State<Home> {
 
                       // Delete Icon Button
                       delete_button: () {
-                        context.read<WordBlocBloc>().add(RemoveWord(index));
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Delete"),
+                              content: Text(
+                                "Are you sure you want to delete this word?",
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<WordBlocBloc>().add(
+                                      RemoveWord(index),
+                                    );
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Yes"),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("NO"),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        // context.read<WordBlocBloc>().add(RemoveWord(index));
                       },
 
                       // Edit Icon Button

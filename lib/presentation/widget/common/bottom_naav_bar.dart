@@ -10,12 +10,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> bottomNavRoutes = [
-      AppRoutes.addWord,
-      AppRoutes.home,
-      AppRoutes.history,
-      AppRoutes.scanner,
-    ];
+    final List<String> bottomNavRoutes = [AppRoutes.home, AppRoutes.addWord];
 
     return BottomNavigationBar(
       selectedItemColor: AppColor.PrimaryColor,
@@ -24,15 +19,10 @@ class BottomNavBar extends StatelessWidget {
         context.go(bottomNavRoutes[index]);
       },
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.qr_code_scanner),
-          label: 'Scanner',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
       ],
-      currentIndex: 2,
+      currentIndex: 0,
     );
   }
 }
