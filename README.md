@@ -13,8 +13,7 @@ This is a simple **Dictionary App** built with Flutter. It helps users manage th
 
 ## App Screenshot
 
-![App Screenshot](assets/screenshot/1.jpeg)
-![App Screenshot](assets/screenshot/2.jpeg)
+![App Screenshot](assets/screenshot/1.jpeg) ![App Screenshot](assets/screenshot/2.jpeg)
 ![App Screenshot](assets/screenshot/3.jpeg)
 ![App Screenshot](assets/screenshot/4.jpeg)
 ![App Screenshot](assets/screenshot/5.jpeg)
